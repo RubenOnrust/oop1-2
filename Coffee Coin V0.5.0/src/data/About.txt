@@ -1,0 +1,6 @@
+Sample blockchain cryptocoin implementation
+Might be developed to prototype
+Version 0.5
+
+By Harald Drillenburg
+Copyright 2020. All rights reserved.

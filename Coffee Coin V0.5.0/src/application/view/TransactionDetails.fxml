@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="870.0" minWidth="700.0" prefHeight="870.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.TransactionDetailController">
+   <children>
+      <Label layoutX="20.0" layoutY="75.0" text="Timestamp" AnchorPane.leftAnchor="20.0" />
+      <TextField fx:id="timestamp" editable="false" layoutX="132.0" layoutY="71.0" prefHeight="26.0" prefWidth="482.0" AnchorPane.leftAnchor="132.0" />
+      <Label layoutX="19.0" layoutY="171.0" text="To" AnchorPane.leftAnchor="19.0" />
+      <Label layoutX="20.0" layoutY="217.0" text="Amount" AnchorPane.leftAnchor="20.0" />
+      <TextField fx:id="to" editable="false" layoutX="132.0" layoutY="167.0" prefHeight="26.0" prefWidth="490.0" />
+      <Label layoutX="21.0" layoutY="121.0" text="From" AnchorPane.leftAnchor="21.0" />
+      <TextField fx:id="from" editable="false" layoutX="132.0" layoutY="117.0" prefHeight="26.0" prefWidth="482.0" />
+      <TextField fx:id="amount" editable="false" layoutX="132.0" layoutY="213.0" prefHeight="26.0" prefWidth="490.0" />
+      <Label layoutX="28.0" layoutY="38.0" text="Transaction Type" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+      <TextField fx:id="transactionType" editable="false" layoutX="132.0" layoutY="16.0" prefHeight="25.0" prefWidth="482.0" AnchorPane.topAnchor="16.0" />
+      <TextArea fx:id="messageText" editable="false" layoutX="20.0" layoutY="257.0" minHeight="572.0" minWidth="660.0" prefHeight="572.0" prefWidth="660.0" wrapText="true" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="270.0" />
+   </children>
+</AnchorPane>

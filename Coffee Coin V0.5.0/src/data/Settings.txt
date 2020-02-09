@@ -1,0 +1,56 @@
+[Local]
+Environment: DEVELOPMENT
+LogLevel: 0
+Settings: C:\Users\Harald\Documents\Eclipse\Output\Settings.txt
+Peers: C:\Users\Harald\Documents\Eclipse\Output\Peers.txt
+Wallet: C:\Users\Harald\Documents\Eclipse\Output\Wallet.txt
+BaseDirectory: C:\Users\Harald\Documents\Eclipse\Output\
+Database: C:\Users\Harald\Documents\Eclipse\Output\
+MinerPath: C:\Users\Harald\Documents\Eclipse\Projecten\Coffee Coin V0.5\bin\miner\
+
+[Genesis Init]
+GenesisPath: C:\Users\Harald\Documents\Eclipse\Output\
+tridecapletFile: 13-tridecaplets.csv
+dodecapletFile: 12-dodecaplets.csv
+undecapletFile: 11-undecaplets.csv
+decapletFile: 10-decaplets.csv
+nenapletFile: 09-nenaplets.csv
+octapletFile: 08-octaplets.csv
+septapletFile: 07-septaplets.csv
+hexapletFile: 06-hexaplets.csv
+pentapletFile: 05-pentaplets.csv
+
+[Network]
+ConfigPort: 61000
+RPCPort: 61001
+ChainListen: 61002
+ChainAnswer: 61003
+MaxPeers: 12
+
+[Wallet]
+RepairLevel: 1
+EncryptionAlgorithm: KECCAK
+EncryptionLevel: 0
+WalletPassword: Secret
+
+[Mining]
+Threads: 3
+Priority: 1
+Autostart: FALSE
+IncludeSubdirs: TRUE
+
+[Difficulties]
+randomDifficulty: 100
+SHA512Difficulty: 30000
+DAGdepth: 10
+
+[Rewards]
+tridecapletValue: 10000
+dodecapletValue: 10000
+undecapletValue: 1000
+decapletValue: 6000
+nenapletValue: 1000
+octapletValue: 90
+septapletValue: 50
+hexapletValue:16
+pentapletValue:2

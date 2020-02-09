@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane minHeight="275.0" minWidth="700.0" prefHeight="480.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.AccountDetailController">
+   <children>
+      <Label layoutX="20.0" layoutY="75.0" text="Created at" AnchorPane.leftAnchor="20.0" />
+      <TextField fx:id="timestamp" editable="false" layoutX="99.0" layoutY="71.0" prefHeight="26.0" prefWidth="315.0" AnchorPane.leftAnchor="99.0" />
+      <Label layoutX="19.0" layoutY="171.0" text="Private Key" AnchorPane.leftAnchor="19.0" />
+      <Label layoutX="20.0" layoutY="217.0" text="Balance" AnchorPane.leftAnchor="20.0" />
+      <TextField fx:id="privateKey" editable="false" layoutX="98.0" layoutY="167.0" prefHeight="26.0" prefWidth="578.0" />
+      <Label layoutX="21.0" layoutY="121.0" text="Public Key" AnchorPane.leftAnchor="21.0" />
+      <TextField fx:id="publicKey" editable="false" layoutX="99.0" layoutY="117.0" prefHeight="26.0" prefWidth="577.0" />
+      <TextField fx:id="balance" editable="false" layoutX="98.0" layoutY="213.0" prefHeight="26.0" prefWidth="134.0" />
+      <Label layoutX="28.0" layoutY="38.0" text="Label" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+      <TextField fx:id="label" layoutX="101.0" layoutY="34.0" AnchorPane.topAnchor="20.0" />
+      <TextArea fx:id="description" layoutX="20.0" layoutY="257.0" prefHeight="200.0" prefWidth="660.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+   </children>
+</AnchorPane>

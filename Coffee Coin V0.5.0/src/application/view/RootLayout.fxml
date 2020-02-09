@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane minHeight="850.0" minWidth="1500.0" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.RootLayoutController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <Menu mnemonicParsing="false" text="New">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#doCreateAccount" text="Account" />
+                      <MenuItem mnemonicParsing="false" onAction="#doCreateTransaction" text="Transaction" />
+                        <MenuItem disable="true" mnemonicParsing="false" text="Miner" visible="false" />
+                    </items>
+                  </Menu>
+                  <MenuItem mnemonicParsing="false" onAction="#doBackupWallet" text="Backup Wallet" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem mnemonicParsing="false" onAction="#close" text="Exit">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="F4" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Wallet">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#doImportWallet" text="Import Wallet" />
+                  <MenuItem mnemonicParsing="false" onAction="#doBackupWallet" text="Backup Wallet" />
+                  <MenuItem mnemonicParsing="false" onAction="#doWalletRepair" text="Repair Wallet" />
+                  <MenuItem mnemonicParsing="false" onAction="#doEncryptWallet" text="Encrypt Wallet" />
+                  <MenuItem mnemonicParsing="false" onAction="#doChangePassword" text="Change Password" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#doShowAccounts" text="Show Accounts" />
+                  <MenuItem mnemonicParsing="false" onAction="#doCreateAccount" text="Create Account" />
+                  <MenuItem mnemonicParsing="false" onAction="#doMergeAccounts" text="Merge Accounts" />
+                  <MenuItem mnemonicParsing="false" onAction="#doDeleteAccount" text="Delete Account" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Transactions">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#doShowTransactions" text="Show Transactions" />
+                  <MenuItem mnemonicParsing="false" onAction="#doCreateTransaction" text="Create Transaction" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Mining">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#doStartMining" text="Start Mining" />
+                  <MenuItem mnemonicParsing="false" onAction="#doStopMining" text="Stop Mining" />
+                  <MenuItem mnemonicParsing="false" onAction="#doMinerPerformance" text="Miner Performance" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Tools">
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#doInformation" text="Information" />
+                  <MenuItem mnemonicParsing="false" onAction="#doNetworkMonitor" text="Network Monitor" />
+                  <MenuItem mnemonicParsing="false" onAction="#doPeersList" text="Peers List" />
+                  <MenuItem mnemonicParsing="false" onAction="#doShowChain" text="Show Chain Content" />
+                <MenuItem mnemonicParsing="false" onAction="#doDebugConsole" text="Debug Console" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Graphs">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#doShowProofDistribution" text="Distribution of Proofs" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Settings">
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#doMiscellaneousSettings" text="Miscellaneous" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+                  <MenuItem onAction="#doManual" text="Coffee Coin Manual">
+                     <accelerator>
+                        <KeyCodeCombination alt="ANY" code="F1" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem mnemonicParsing="false" onAction="#doAbout" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

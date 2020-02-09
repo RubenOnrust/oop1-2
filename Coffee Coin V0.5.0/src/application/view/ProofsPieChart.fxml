@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="850.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ProofsPieChartController">
+   <children>
+      <PieChart fx:id="pieChartOccurrences" labelLineLength="50.0" layoutX="36.0" layoutY="38.0" prefHeight="550.0" prefWidth="550.0" title="Proofs per prooftype" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
+      <PieChart fx:id="pieChartAmount" labelLineLength="50.0" layoutX="668.0" layoutY="33.0" prefHeight="550.0" prefWidth="550.0" title="Rewards per prooftype" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0" />
+      <Label fx:id="totalValue" layoutX="50.0" layoutY="665.0" prefHeight="17.0" prefWidth="350.0" text="Total value  in chain" />
+      <Label fx:id="totalBlocks" layoutX="50.0" layoutY="648.0" prefHeight="17.0" prefWidth="350.0" text="Total number of blocks" />
+      <Label fx:id="totalGenesisProofs" layoutX="50.0" layoutY="682.0" prefHeight="17.0" prefWidth="350.0" text="Total number of genesis proofs" />
+      <Label fx:id="totalTransactionsInChain" layoutX="50.0" layoutY="699.0" prefHeight="17.0" prefWidth="350.0" text="Total transaction in chain" />
+      <Label fx:id="totalTransactionsInPool" layoutX="50.0" layoutY="716.0" prefHeight="17.0" prefWidth="350.0" text="Total transactions in pool" />
+   </children>
+</AnchorPane>
