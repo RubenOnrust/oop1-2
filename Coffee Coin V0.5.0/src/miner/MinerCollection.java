@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import org.apache.commons.io.FileUtils;
-import com.sun.scenario.Settings;
+import domain.Settings;
 
 public class MinerCollection {
 	private static MinerCollection instance;
+	private List<String> miners;
 	    
 	private MinerCollection(){}
 	    
@@ -18,10 +19,19 @@ public class MinerCollection {
 		}
 		return instance;
 	}
-	public void getMiners() {
+
+	public List<String> getMiners() {
+		return miners;
+	}
+
+	public void setMiners(List<String> miners) {
+		this.miners = miners;
+	}
+	
+	public void makeMinerList() {
 		List<File> minerFiles = new ArrayList<File>();
 		final String[] SUFFIX = {"class"};  // use the suffix to filter
-		File minerPath = Settings.getInstance().getMinerPath();
+		File minerPath = Settings.instance().getMinerPath();
 		Collection<File> files = FileUtils.listFiles(minerPath, SUFFIX, true);
 		for (File file: files) {
 			if ((file.getName().endsWith("Miner.class")) && 
@@ -30,13 +40,17 @@ public class MinerCollection {
 			    	minerFiles.add(file);
 			}
 		}
-
+		List<String> listOfMiners = new ArrayList<String>();
+		for (int i = 0; i < minerFiles.size(); i++) {
+			String b = minerFiles.get(i).getName();
+			listOfMiners.add(b);
+		}
+		this.miners = listOfMiners;
 	}
-	
+
 	public static void main(String[] args) {
 		MinerCollection a = new MinerCollection();
-		a.getMiners();
-		
+		a.makeMinerList();
+		System.out.println(a.getMiners());
 	}
-
 }
