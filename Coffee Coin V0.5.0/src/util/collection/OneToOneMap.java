@@ -3,63 +3,46 @@ package util.collection;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.Function;
 
-public class OneToOneMap{
-	private HashMap<Integer, String> map;
+public class OneToOneMap<K, V> implements Map<K, V>{
+	private HashMap<K, V> map = new HashMap<K, V>();
 
-	public OneToOneMap() {
-		map = new HashMap<Integer, String>();
-	}
-
-
-	public boolean equals(Object o) {
-		return map.equals(o);
-	}
-
-
-	public int hashCode() {
-		return map.hashCode();
-	}
-
-
-	public String toString() {
-		return map.toString();
-	}
-
-
+	@Override
 	public int size() {
 		return map.size();
 	}
 
-
+	@Override
 	public boolean isEmpty() {
 		return map.isEmpty();
 	}
 
-
-	public String get(Object key) {
-		return map.get(key);
-	}
-
-
+	@Override
 	public boolean containsKey(Object key) {
 		return map.containsKey(key);
 	}
 
-	public String put(Integer key, String value) {
-		if (key == null) {
+	@Override
+	public boolean containsValue(Object value) {
+		return map.containsValue(value);
+	}
+
+	@Override
+	public V get(Object key) {
+		return map.get(key);
+	}
+
+	@Override
+	public V put(K key, V value) {
+		if (key.equals(null)) {
 			throw new NullPointerException("oops a null value");
 			
 		}
-		if (value == null) {
+		if (value.equals(null)) {
 			throw new NullPointerException("oops a null value");
 		}
-		if (map.containsValue(value) == true) {
+		if (map.containsValue(value)) {
 			for (int i = 0; i < map.size(); i++) {
 				if (map.get(i) == value) {
 					map.remove(i);
@@ -73,101 +56,56 @@ public class OneToOneMap{
 		return map.put(key, value);
 	}
 
-
-	public void putAll(Map<? extends Integer, ? extends String> m) {
-		map.putAll(m);
-	}
-
-
-	public String remove(Object key) {
+	@Override
+	public V remove(Object key) {
 		return map.remove(key);
 	}
 
+	@Override
+	public void putAll(Map<? extends K, ? extends V> m) {
+		for (K key : m.keySet()) {
+			if (map.containsValue(m.get(key))) {
+				for (int i = 0; i < map.size(); i++) {
+					if (map.get(i) == m.get(key)) {
+						map.remove(i);
+						map.put(key, m.get(key));
+					}
+				}
+			}
+			map.put(key, m.get(key));
+		}
+	}
 
+	@Override
 	public void clear() {
 		map.clear();
 	}
 
-
-	public boolean containsValue(Object value) {
-		return map.containsValue(value);
-	}
-
-
-	public Set<Integer> keySet() {
+	@Override
+	public Set<K> keySet() {
 		return map.keySet();
 	}
 
-
-	public Collection<String> values() {
+	@Override
+	public Collection<V> values() {
 		return map.values();
 	}
 
-
-	public Set<Entry<Integer, String>> entrySet() {
+	@Override
+	public Set<Entry<K, V>> entrySet() {
 		return map.entrySet();
 	}
-
-
-	public String getOrDefault(Object key, String defaultValue) {
-		return map.getOrDefault(key, defaultValue);
-	}
-
-
-	public String putIfAbsent(Integer key, String value) {
-		return map.putIfAbsent(key, value);
-	}
-
-
-	public boolean remove(Object key, Object value) {
-		return map.remove(key, value);
-	}
-
-
-	public boolean replace(Integer key, String oldValue, String newValue) {
-		return map.replace(key, oldValue, newValue);
-	}
-
-
-	public String replace(Integer key, String value) {
-		return map.replace(key, value);
-	}
-
-
-	public String computeIfAbsent(Integer key, Function<? super Integer, ? extends String> mappingFunction) {
-		return map.computeIfAbsent(key, mappingFunction);
-	}
-
-
-	public String computeIfPresent(Integer key,
-			BiFunction<? super Integer, ? super String, ? extends String> remappingFunction) {
-		return map.computeIfPresent(key, remappingFunction);
-	}
-
-
-	public String compute(Integer key,
-			BiFunction<? super Integer, ? super String, ? extends String> remappingFunction) {
-		return map.compute(key, remappingFunction);
-	}
-
-
-	public String merge(Integer key, String value,
-			BiFunction<? super String, ? super String, ? extends String> remappingFunction) {
-		return map.merge(key, value, remappingFunction);
-	}
-
-
-	public void forEach(BiConsumer<? super Integer, ? super String> action) {
-		map.forEach(action);
-	}
-
-
-	public void replaceAll(BiFunction<? super Integer, ? super String, ? extends String> function) {
-		map.replaceAll(function);
-	}
-
-
-	public Object clone() {
-		return map.clone();
-	}
+    public static void main(String[] args) {
+        OneToOneMap<Integer, Integer> testMap = new OneToOneMap<Integer, Integer>();
+        testMap.put(1, 1);
+        testMap.put(2, 2);
+        testMap.put(3, 3);
+        HashMap<Integer, Integer> testing = new HashMap<Integer, Integer>();
+        testing.put(4, 5);
+        testing.put(6, 4);
+        testing.put(5, 20); 
+        testMap.putAll(testing);
+        System.out.println(testMap.keySet());
+        System.out.println(testMap.values());
+}
 }
