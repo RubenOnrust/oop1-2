@@ -40,6 +40,7 @@ public class MinerCollection {
 			    	minerFiles.add(file);
 			}
 		}
+		minerFiles.get(1).getParent();
 		List<String> listOfMiners = new ArrayList<String>();
 		for (int i = 0; i < minerFiles.size(); i++) {
 			String b = minerFiles.get(i).getName();
@@ -47,10 +48,15 @@ public class MinerCollection {
 		}
 		this.miners = listOfMiners;
 	}
+	public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+	    ClassLoader classLoader = MinerCollection.class.getClassLoader();
 
-	public static void main(String[] args) {
-		MinerCollection a = new MinerCollection();
-		a.makeMinerList();
-		System.out.println(a.getMiners());
+	    try {
+	        Class aClass = classLoader.loadClass("com.jenkov.MyClass");
+	        System.out.println("aClass.getName() = " + aClass.getName());
+	    } catch (ClassNotFoundException e) {
+	        e.printStackTrace();
+
+	    }
 	}
 }

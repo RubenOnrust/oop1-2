@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import miner.ChainController;
+import miner.MinerCollection;
 import miner.MinerPool;
 import miner.MiningResultsQueue;
 
@@ -27,6 +28,9 @@ public class MainCoffee extends Application {
     private static BorderPane rootLayout;
 
     public static void main(String[] args) {
+		MinerCollection a = MinerCollection.getInstance();
+		a.makeMinerList();
+		System.out.println(a.getMiners());
         launch(args);
     }
 

@@ -6,7 +6,22 @@ import java.util.Map;
 import java.util.Set;
 
 public class OneToOneMap<K, V> implements Map<K, V>{
-	private HashMap<K, V> map = new HashMap<K, V>();
+	private HashMap<K, V> map;
+    private static OneToOneMap<?, ?> single_instance = null; 
+    
+    private OneToOneMap(K key, V value) 
+    { 
+    	this.map = new HashMap<K, V>();
+    } 
+  
+    // static method to create instance of Singleton class 
+    public static <K,V> Map<?,?> getInstance(K key, V value) 
+    { 
+        if (single_instance == null) 
+            single_instance = new OneToOneMap<K, V>(key, value); 
+  
+        return single_instance; 
+    }
 
 	@Override
 	public int size() {
@@ -43,9 +58,9 @@ public class OneToOneMap<K, V> implements Map<K, V>{
 			throw new NullPointerException("oops a null value");
 		}
 		if (map.containsValue(value)) {
-			for (int i = 0; i < map.size(); i++) {
-				if (map.get(i) == value) {
-					map.remove(i);
+			for (K key1 : map.keySet()) {
+				if (map.get(key1) == value) {
+					map.remove(key1);
 					return map.put(key, value);
 				}
 			}
@@ -63,17 +78,10 @@ public class OneToOneMap<K, V> implements Map<K, V>{
 
 	@Override
 	public void putAll(Map<? extends K, ? extends V> m) {
+		OneToOneMap<K, V> testMap = (OneToOneMap<K, V>) OneToOneMap.getInstance(null, null);
 		for (K key : m.keySet()) {
-			if (map.containsValue(m.get(key))) {
-				for (int i = 0; i < map.size(); i++) {
-					if (map.get(i) == m.get(key)) {
-						map.remove(i);
-						map.put(key, m.get(key));
-					}
-				}
-			}
-			map.put(key, m.get(key));
-		}
+			testMap.put(key, m.get(key));
+		}    
 	}
 
 	@Override
@@ -96,14 +104,15 @@ public class OneToOneMap<K, V> implements Map<K, V>{
 		return map.entrySet();
 	}
     public static void main(String[] args) {
-        OneToOneMap<Integer, Integer> testMap = new OneToOneMap<Integer, Integer>();
-        testMap.put(1, 1);
-        testMap.put(2, 2);
-        testMap.put(3, 3);
-        HashMap<Integer, Integer> testing = new HashMap<Integer, Integer>();
-        testing.put(4, 5);
-        testing.put(6, 4);
-        testing.put(5, 20); 
+        OneToOneMap<Integer, String> testMap = (OneToOneMap<Integer, String>) OneToOneMap.getInstance(null, null);
+        testMap.put(1, "a");
+        testMap.put(2, "b");
+        testMap.put(3, "c");
+        HashMap<Integer, String> testing = new HashMap<Integer, String>();
+        testing.put(4, "b");
+        testing.put(5, "a"); 
+        testing.put(6, "b");
+        testing.put(7, "b");
         testMap.putAll(testing);
         System.out.println(testMap.keySet());
         System.out.println(testMap.values());

@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-
 import domain.Account;
 import domain.Settings;
 import miner.factory.MinerFactory;
+import util.pattern.Observable;
 
-public class MinerPool  {
+public class MinerPool extends Observable {
 	private List<IMiner> miners;
 	private ExecutorService pool;
 	private static MinerPool innerObject = null;
@@ -30,16 +30,19 @@ public class MinerPool  {
 	
 	public void start(int index) {
 		pool.submit(miners.get(index));
+		notifyObservers();
 	}
 	
 	public void stop(int index) {
 		miners.get(index).stop();
+		notifyObservers();
 	}
 	
 	public void startAll() {
 		for (int i=0; i<miners.size(); i++) {
 			start(i);
 		}
+		notifyAll();
 	}
 	
 	public void stopAll() {
@@ -53,5 +56,6 @@ public class MinerPool  {
 			e.printStackTrace();
 		}
 		pool = Executors.newFixedThreadPool(Settings.instance().getNumberOfMinerThreads());
+		notifyAll();
 	}
 }
