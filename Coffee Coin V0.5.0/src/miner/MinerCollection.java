@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.List;
 import org.apache.commons.io.FileUtils;
 import domain.Settings;
+import miner.*;
 
 public class MinerCollection {
 	private static MinerCollection instance;
@@ -49,14 +50,25 @@ public class MinerCollection {
 		this.miners = listOfMiners;
 	}
 	public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
-	    ClassLoader classLoader = MinerCollection.class.getClassLoader();
-
-	    try {
-	        Class aClass = classLoader.loadClass("com.jenkov.MyClass");
-	        System.out.println("aClass.getName() = " + aClass.getName());
-	    } catch (ClassNotFoundException e) {
-	        e.printStackTrace();
-
-	    }
+		List<File> minerFiles = new ArrayList<File>();
+		final String[] SUFFIX = {"class"};  // use the suffix to filter
+		File minerPath = Settings.instance().getMinerPath();
+		Collection<File> files = FileUtils.listFiles(minerPath, SUFFIX, true);
+		for (File file: files) {
+			if ((file.getName().endsWith("Miner.class")) && 
+		(!file.getName().startsWith("I")) && 
+		(!file.getName().contains("Abstract"))) {
+			    	minerFiles.add(file);
+			}
+		}
+		minerFiles.get(1).getParent();
+		List<String> listOfMiners = new ArrayList<String>();
+		for (int i = 0; i < minerFiles.size(); i++) {
+			String b = minerFiles.get(i).getName();
+			listOfMiners.add(b);
+		}
+		ClassLoader classLoader = MinerCollection.class.getClassLoader();
+		Class aClass = classLoader.loadClass("miner.*");
+		System.out.println();
 	}
 }
